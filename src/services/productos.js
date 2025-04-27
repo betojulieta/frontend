@@ -1,4 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL; // Centraliza la URL base
+
+console.log(API_URL);
 export async function fetchProductoById(id) {
   try {
     const res = await fetch(`${API_URL}/api/productos/${id}`, {
