@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ResultadosBusqueda from "@/app/components/ResultadosBusqueda";
 import { fetchProductos, deleteProducto } from "@/services/productos";
-
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL; 
 const Buscar = () => {
   const [productos, setProductos] = useState([]);
   const [resultados, setResultados] = useState([]);
@@ -33,7 +33,7 @@ const Buscar = () => {
       if (!query) return;
       setLoading(true);
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/buscador", {
+        const res = await fetch(`${API_URL}/api/buscador`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query }),
